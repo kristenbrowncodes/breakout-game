@@ -72,6 +72,17 @@
 			paddleX = relativeX - paddleWidth/2
 		}
 	}
+	document.addEventListener("touchmove", touchMoveHandler, false);
+	function touchMoveHandler(e) {
+		if (!e)
+            var e = event;
+		if (e.touches.length == 1) {
+		var touchX = e.clientX - canvas.offsetLeft;
+		if(touchX > 0 && touchX < canvas.width){
+			paddleX = touchX - paddleWidth/2
+		}
+		}
+	}
 	function collisionDetection() {
 		 for(var c=0;c<brickColumnCount; c++){
 			for(var r=0;r<brickRowCount; r++){
